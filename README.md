@@ -22,6 +22,7 @@ Required parts for assembly:
 - 250 mAh 1S lipo battery
 - Small uFl GPS antenna (not required for the non-GPS version of the development board)
 - 4x short M2 screws
+- 22mm watch strap (compatible with Huawei GT2/GT3 straps)
 - qpaper logo sticker for the right bezel (optional ofc :D)
 
 ## The Firmware
