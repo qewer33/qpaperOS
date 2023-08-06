@@ -12,7 +12,7 @@ qpaper has a battery life of approx. ~5 days with a 250 mAh battery.
 
 ### Assembly
 
-The outer sheell/case of the qpaper is meant to be 3D printed and assembled with 4 short M2 screws. The 3D models and FreeCAD file for the case can be found under `assets/3d/`
+The outer sheell/case of the qpaper is meant to be 3D printed and assembled with 4 short M2 screws. The 3D models and FreeCAD file for the case can be found under `assets/3d/` (https://github.com/qewer33/qpaperOS/tree/main/assets/3d)
 
 Required parts for assembly:
 - LILYGO T-Wrist E-Paper ESP32 development board
