@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classace__button_1_1ButtonConfig.html" title="Class that defines the timing parameters and event handler of an AceButton or a group of AceButton in..." alt="" coords="5,225,192,251"/>
+<area shape="rect" id="node2" href="$classace__button_1_1ButtonConfigFast1.html" title="An implementation of ButtonConfig that uses digitalReadFast() instead of digitalRead() to support 1 b..." alt="" coords="262,5,449,47"/>
+<area shape="rect" id="node3" href="$classace__button_1_1ButtonConfigFast2.html" title="An implementation of ButtonConfig that uses digitalReadFast() instead of digitalRead() to support 2 b..." alt="" coords="262,71,449,112"/>
+<area shape="rect" id="node4" href="$classace__button_1_1ButtonConfigFast3.html" title="An implementation of ButtonConfig that uses digitalReadFast() instead of digitalRead() to support 3 b..." alt="" coords="262,137,449,193"/>
+<area shape="rect" id="node5" href="$classace__button_1_1Encoded4To2ButtonConfig.html" title="A ButtonConfig that handles an 4&#45;to&#45;2 binary encoder which converts 4 inputs into 2 outputs." alt="" coords="240,217,471,259"/>
+<area shape="rect" id="node6" href="$classace__button_1_1Encoded8To3ButtonConfig.html" title="A ButtonConfig that handles an 8&#45;to&#45;3 binary encoder which converts 8 inputs into 3 outputs." alt="" coords="240,283,471,324"/>
+<area shape="rect" id="node7" href="$classace__button_1_1EncodedButtonConfig.html" title="A ButtonConfig that handles an N&#45;to&#45;M binary encoder where N = 2^M." alt="" coords="255,348,455,389"/>
+<area shape="rect" id="node8" href="$classace__button_1_1LadderButtonConfig.html" title="A ButtonConfig that handles multiple buttons using a resistor ladder." alt="" coords="261,413,450,455"/>
+</map>

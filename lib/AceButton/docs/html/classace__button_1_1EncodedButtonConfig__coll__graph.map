@@ -1,0 +1,4 @@
+<map id="ace_button::EncodedButtonConfig" name="ace_button::EncodedButtonConfig">
+<area shape="rect" id="node1" title="A ButtonConfig that handles an N&#45;to&#45;M binary encoder where N = 2^M." alt="" coords="5,80,205,121"/>
+<area shape="rect" id="node2" href="$classace__button_1_1ButtonConfig.html" title="Class that defines the timing parameters and event handler of an AceButton or a group of AceButton in..." alt="" coords="12,5,199,32"/>
+</map>

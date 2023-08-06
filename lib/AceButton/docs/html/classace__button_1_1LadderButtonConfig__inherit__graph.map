@@ -1,0 +1,4 @@
+<map id="ace_button::LadderButtonConfig" name="ace_button::LadderButtonConfig">
+<area shape="rect" id="node1" title="A ButtonConfig that handles multiple buttons using a resistor ladder." alt="" coords="5,80,195,121"/>
+<area shape="rect" id="node2" href="$classace__button_1_1ButtonConfig.html" title="Class that defines the timing parameters and event handler of an AceButton or a group of AceButton in..." alt="" coords="7,5,193,32"/>
+</map>

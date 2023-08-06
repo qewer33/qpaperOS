@@ -1,0 +1,4 @@
+<map id="ace_button::ButtonConfigFast1&lt; T_PIN0 &gt;" name="ace_button::ButtonConfigFast1&lt; T_PIN0 &gt;">
+<area shape="rect" id="node1" title="An implementation of ButtonConfig that uses digitalReadFast() instead of digitalRead() to support 1 b..." alt="" coords="5,80,192,121"/>
+<area shape="rect" id="node2" href="$classace__button_1_1ButtonConfig.html" title="Class that defines the timing parameters and event handler of an AceButton or a group of AceButton in..." alt="" coords="5,5,192,32"/>
+</map>
