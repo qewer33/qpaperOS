@@ -6,6 +6,8 @@ qpaperOS is a smartwatch firmware implementation for the LILYGO T-Wrist E-Paper 
 
 ![screenshot](assets/qpaper_screenshot.jpeg)
 
+More photos of the complete watch can be found under `assets/photos/` (https://github.com/qewer33/qpaperOS/tree/main/assets/photos)
+
 qpaper is meant to be a minimal and lighweight smartwatch that does what it needs to do: always display time. The low power E-Paper screen of the qpaper allows it to always display the time and other information without having the display blank. The ESP32 wakes up every minute to update the display to show the correct time. More information about how the firmware works can be found in the next section.
 
 qpaper has a battery life of approx. ~5 days with a 250 mAh battery.

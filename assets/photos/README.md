@@ -1,0 +1,7 @@
+![photo_1](qpaper_photo_1.jpeg)
+![photo_2](qpaper_photo_2.jpeg)
+![photo_3](qpaper_photo_3.jpeg)
+![photo_4](qpaper_photo_4.jpeg)
+![photo_5](qpaper_photo_5.jpeg)
+![photo_6](qpaper_photo_6.jpeg)
+![photo_7](qpaper_photo_7.jpeg)
