@@ -6,7 +6,6 @@ int calculateBatteryStatus() {
     bat += analogRead(BAT_ADC);
   }
   bat /= 25;
-  float volt = (bat * 3.3 / 4096) * 2;
-  volt = bat > 2500 ? 1 : volt / 4.2;
-  return (int)constrain(map(volt * 100, 0, 86, 0, 100), 0, 100);
+  float volt = (bat * 3.3 / 4096);
+  return (int)(volt * 1000);
 }

@@ -5,8 +5,11 @@
 void wakeupInit(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
   log(LOG_INFO, "WAKEUP_INIT");
 
-  rtc->setTime(preferences->getLong64("prev_time_unix", 0) + 60);
+  // rtc->setTime(preferences->getLong64("prev_time_unix", 0) + 60);
 
+  display->fillScreen(GxEPD_WHITE);
+  display->update();
+  delay(1000);
   drawHomeUI(display, rtc, calculateBatteryStatus());
   display->update();
 

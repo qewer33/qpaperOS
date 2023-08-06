@@ -118,8 +118,9 @@ void loop() {
 
   switch (wakeup) {
   case WakeupFlag::WAKEUP_INIT:
-    if (sleepTimer == 15) {
-      esp_sleep_enable_timer_wakeup(UPDATE_WAKEUP_TIMER_US - 15000000);
+    if (sleepTimer == 60) {
+      wakeup = WakeupFlag::WAKEUP_LIGHT;
+      esp_sleep_enable_timer_wakeup(1000000);
       esp_deep_sleep_start();
     }
     break;
