@@ -7,5 +7,5 @@ int calculateBatteryStatus() {
   }
   bat /= 25;
   float volt = (bat * 3.3 / 4096);
-  return (int)(volt * 1000);
+  return constrain(map(volt * 100, 163, 185, 0, 100), 0, 100);
 }

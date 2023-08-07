@@ -25,11 +25,11 @@ void drawHomeUI(GxEPD_Class *display, ESP32Time *rtc, int batteryStatus) {
   display->setFont(&Outfit_60011pt7b);
   printRightString(display, String(String(batteryStatus) + "%").c_str(), 166, 22);
 
-  const unsigned char *icon_battery_small_array[6] = {epd_bitmap_icon_battery_0_small,  epd_bitmap_icon_battery_20_small,
-                                                      epd_bitmap_icon_battery_40_small, epd_bitmap_icon_battery_60_small,
-                                                      epd_bitmap_icon_battery_80_small, epd_bitmap_icon_battery_100_small};
+  const unsigned char *icon_battery_small_array[6] PROGMEM = {epd_bitmap_icon_battery_0_small,  epd_bitmap_icon_battery_20_small,
+                                                              epd_bitmap_icon_battery_40_small, epd_bitmap_icon_battery_60_small,
+                                                              epd_bitmap_icon_battery_80_small, epd_bitmap_icon_battery_100_small};
 
-  // display->drawBitmap(170, 2, icon_battery_small_array[(int)map(batteryStatus, 0, 100, 0, 5)], 28, 28, GxEPD_BLACK);
+  display->drawBitmap(170, 2, icon_battery_small_array[batteryStatus / 20], 28, 28, GxEPD_BLACK);
 
   // Status icons
   display->drawBitmap(2, 2, icon_wifi_small, 28, 28, GxEPD_BLACK);
