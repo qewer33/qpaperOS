@@ -18,14 +18,14 @@ The outer sheell/case of the qpaper is meant to be 3D printed and assembled with
 
 Required parts for assembly:
 - LILYGO T-Wrist E-Paper ESP32 development board
+    - https://www.lilygo.cc/products/t-wrist-e-paper-1-54-inch-display?variant=42405749948597 (Note: you don't need to buy the GPS version if you don't want the GPS features but if you don't have a LILYGO T-U2T, buy a version with T-U2T bundled. You *need* T-U2T to program the board!)
 - 3D printed "Shell" piece
 - 3D printed "Bottom Plate" piece
 - 3D printed "Buttons" piece
 - 250 mAh 1S lipo battery
-- Small uFl GPS antenna (not required for the non-GPS version of the development board)
-- 4x short M2 screws
+- Half-size uFl GPS antenna (not required for the non-GPS version of the development board)
+- 4x short M2/M1.6/M1.4 screws
 - 22mm watch strap (compatible with Huawei GT2/GT3 straps)
-- qpaper logo sticker for the right bezel (optional ofc :D)
 
 ## The Firmware
 
