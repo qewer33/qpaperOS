@@ -10,7 +10,7 @@ More photos of the complete watch can be found under `assets/photos/` (https://g
 
 qpaper is meant to be a minimal and lighweight smartwatch that does what it needs to do: always display time. The low power E-Paper screen of the qpaper allows it to always display the time and other information without having the display blank. The ESP32 wakes up every minute to update the display to show the correct time. More information about how the firmware works can be found in the next section.
 
-qpaper has a battery life of approx. ~5 days with a 250 mAh battery.
+qpaper has a battery life of approx. ~3-4 days with a 250 mAh battery. This number is way lower than it should be (the battery should ideally last more than a week but I sometimes even get 2 days for some reason) and I'm not sure if it's a fault of the firmware of if the board is wasting the battery somehow, need to debug.
 
 ### Assembly
 
