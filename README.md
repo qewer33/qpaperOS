@@ -37,9 +37,38 @@ qpaperOS is the firmware part of the qpaper project. It is developed to work wit
 Below are features that are implemented or planned:
 
 - [x] Display time and date
-- [x] Display battery percentage (partially implemented, doesn't work correctly)
+- [x] Display battery percentage
 - [x] Have the ESP32 MCU on deep sleep and wakeup every minute to update the display for power saving
+- [x] Apps and app system (partially implemented)
+- [ ] Themes and theme system (switchable watchface system)
 - [ ] GPS functionality
 - [ ] GPS based step counter
 - [ ] Weather display
 - [ ] Islamic prayer times display
+
+### Apps
+
+Apps live under the `src/apps` directory. Each app has it's own subdirectory and consists of 3 (or 2, one of them is optional) files.
+
+```sh
+src/
+    apps/
+        appname/
+            app_appname.cpp
+            app_appname.h
+            app_appname_res.h  # optional
+```
+
+The `app_appname.h` file is the header file of the app. It contains the class and the extern instance definition of the app. Apps should extend the `App` class defined in `src/apps.h`. The methods that are going to be used by the app should be overriden methods from the `App` class. The instance should be an instance of the newly defined app class wrapped in an `std::unique_pointer`. There are 5 methods that apps can override from the App class:
+
+- `setup()`: Runs before the app gets started. Useful for initializing variable defaults or loading preferences.
+- `drawUI(GxEPD_Class *display)`: Runs every frame when the app is running. This method should draw the user interface of the app using `display`.
+- `exit()`: Runs when the app gets exited. Useful for saving preferences and such.
+- `buttonClick()`: Runs when the user button gets clicked while in the app.
+- `buttonDoubleClick()`: Runs when the user button gets double clicked while in the app.
+
+The `app_appname.cpp` file is the source file of the app. The source file should define the instance and implement the necessary app methods. The app constructor takes 2 argumnets: the first argument `String name` is the name and the second argument `uint16_t* icon` is the icon resource of the app.
+
+The `app_appname_res.h` file contains the custom resources that are used by the app. These resources can be fonts, icons etc. This file is not necessary if the app doesn't have any custom resources. The app icon should go in `src/resources/app_icons.h`, not the app resource file.
+
+The finished app should be included in `src/apps.cpp` and should be added to the apps array in the `initApps()` function.

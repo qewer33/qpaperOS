@@ -4,16 +4,16 @@ void log(LogLevel level, const char *message) {
   if (Serial) {
     String prefix = "";
     switch (level) {
-    case LOG_INFO:
+    case LogLevel::INFO:
       prefix = "[INFO]";
       break;
-    case LOG_SUCCESS:
+    case LogLevel::SUCCESS:
       prefix = "[SUCCESS]";
       break;
-    case LOG_WARNING:
+    case LogLevel::WARNING:
       prefix = "[WARNING]";
       break;
-    case LOG_ERROR:
+    case LogLevel::ERROR:
       prefix = "[ERROR]";
       break;
     }

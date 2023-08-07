@@ -2,6 +2,9 @@
 
 #include "Arduino.h"
 
+// Use https://javl.github.io/image2cpp/
+// with inverted color and black background
+
 // ----- STATUS ICONS -----
 
 const unsigned char icon_wifi_small[] PROGMEM = {

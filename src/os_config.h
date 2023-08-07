@@ -13,6 +13,7 @@
 #define PWR_EN                 5
 #define BACKLIGHT              33
 #define BAT_ADC                34
+#define PIN_MOTOR              4
 
 #define SPI_SCK                14
 #define SPI_DIN                13

@@ -1,4 +1,0 @@
-<map id="ace_button::Encoded4To2ButtonConfig" name="ace_button::Encoded4To2ButtonConfig">
-<area shape="rect" id="node1" title="A ButtonConfig that handles an 4&#45;to&#45;2 binary encoder which converts 4 inputs into 2 outputs." alt="" coords="5,80,236,121"/>
-<area shape="rect" id="node2" href="$classace__button_1_1ButtonConfig.html" title="Class that defines the timing parameters and event handler of an AceButton or a group of AceButton in..." alt="" coords="27,5,214,32"/>
-</map>

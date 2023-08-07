@@ -1,11 +1,11 @@
 #include "wakeup.h"
 
-// Wakeup
+// Setup
 
 void wakeupInit(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
-  log(LOG_INFO, "WAKEUP_INIT");
+  log(LogLevel::INFO, "WAKEUP_INIT");
 
-  // rtc->setTime(preferences->getLong64("prev_time_unix", 0) + 60);
+  rtc->setTime(preferences->getLong64("prev_time_unix", 0) + 15);
 
   display->fillScreen(GxEPD_WHITE);
   display->update();
@@ -15,11 +15,11 @@ void wakeupInit(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
-  log(LOG_SUCCESS, "WiFi initiliazed");
+  log(LogLevel::SUCCESS, "WiFi initiliazed");
 }
 
 void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
-  log(LOG_INFO, "WAKEUP_LIGHT");
+  log(LogLevel::INFO, "WAKEUP_LIGHT");
   setCpuFrequencyMhz(80);
 
   drawHomeUI(display, rtc, calculateBatteryStatus());
@@ -36,7 +36,7 @@ void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class 
     return;
   }
 
-  log(LOG_INFO, "Going to sleep...");
+  log(LogLevel::INFO, "Going to sleep...");
   digitalWrite(PWR_EN, LOW);
   esp_sleep_enable_ext0_wakeup((gpio_num_t)PIN_KEY, 0);
   esp_sleep_enable_timer_wakeup(UPDATE_WAKEUP_TIMER_US);
@@ -44,9 +44,12 @@ void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class 
 }
 
 void wakeupFull(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
-  log(LOG_INFO, "WAKEUP_FULL");
+  log(LogLevel::INFO, "WAKEUP_FULL");
 
   wakeupCount = 0;
+
+  initApps();
+  log(LogLevel::SUCCESS, "Apps initiliazed");
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
@@ -54,11 +57,32 @@ void wakeupFull(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
 
 // Loop
 
-void wakeupInitLoop(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
-  log(LOG_INFO, "WAKEUP_FULL");
+void wakeupInitLoop(WakeupFlag *wakeupType, unsigned int sleepTimer, GxEPD_Class *display, ESP32Time *rtc) {
+  if (sleepTimer == 30) {
+    *wakeupType = WakeupFlag::WAKEUP_LIGHT;
+    esp_sleep_enable_timer_wakeup(1000000);
+    esp_deep_sleep_start();
+  }
+}
 
-  wakeupCount = 0;
+void wakeupLightLoop(WakeupFlag *wakeupType, unsigned int sleepTimer, GxEPD_Class *display, ESP32Time *rtc) {
+  if (sleepTimer == 15) {
+    esp_sleep_enable_timer_wakeup(UPDATE_WAKEUP_TIMER_US - 15000000);
+    esp_deep_sleep_start();
+  }
+}
 
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
+void wakeupFullLoop(WakeupFlag *wakeupType, unsigned int sleepTimer, GxEPD_Class *display, ESP32Time *rtc, AwakeState awakeState) {
+  if (awakeState == AwakeState::APPS_MENU) {
+    drawAppsListUI(display, rtc, calculateBatteryStatus());
+    display->updateWindow(0, 0, GxEPD_WIDTH, GxEPD_HEIGHT);
+  } else {
+    apps[currentAppIndex]->drawUI(display);
+  }
+
+  if (sleepTimer == 15) {
+    *wakeupType = WakeupFlag::WAKEUP_LIGHT;
+    esp_sleep_enable_timer_wakeup(1000000);
+    esp_deep_sleep_start();
+  }
 }

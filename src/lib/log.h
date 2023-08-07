@@ -2,6 +2,6 @@
 
 #include "Arduino.h"
 
-enum LogLevel { LOG_INFO, LOG_SUCCESS, LOG_WARNING, LOG_ERROR };
+enum class LogLevel { INFO, SUCCESS, WARNING, ERROR };
 
 void log(LogLevel level, const char *message);
