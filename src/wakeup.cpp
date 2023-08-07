@@ -20,6 +20,7 @@ void wakeupInit(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
 
 void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
   log(LOG_INFO, "WAKEUP_LIGHT");
+  setCpuFrequencyMhz(80);
 
   drawHomeUI(display, rtc, calculateBatteryStatus());
   display->update();
@@ -29,13 +30,11 @@ void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class 
 
   wakeupCount++;
 
-  /*
   if (*wakeupCount % 30 == 0) {
     WiFi.mode(WIFI_STA);
     WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
     return;
   }
-  */
 
   log(LOG_INFO, "Going to sleep...");
   digitalWrite(PWR_EN, LOW);
