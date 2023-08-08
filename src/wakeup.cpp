@@ -45,6 +45,7 @@ void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class 
 
 void wakeupFull(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
   log(LogLevel::INFO, "WAKEUP_FULL");
+  setCpuFrequencyMhz(240);
 
   wakeupCount = 0;
 

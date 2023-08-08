@@ -22,9 +22,6 @@
 
 using namespace ace_button;
 
-String wifi_ssid = "SUPERONLINE_WiFi_0657"; //"your ssid";
-String wifi_passwd = "YLNXEKY9W9TR";        //"your password";
-
 GxIO_Class io(SPI, /*CS*/ EPD_CS, /*DC=*/EPD_DC, /*RST=*/EPD_RESET);
 GxEPD_Class display(io, /*RST=*/EPD_RESET, /*BUSY=*/EPD_BUSY);
 
@@ -101,8 +98,6 @@ void setup() {
   log(LogLevel::SUCCESS, "Hardware timer initiliazed");
 
   preferences.begin(PREFS_KEY);
-  preferences.putString("wifi_ssid", wifi_ssid);
-  preferences.putString("wifi_passwd", wifi_passwd);
   log(LogLevel::SUCCESS, "Preferences initiliazed");
 
   configTime(GMT_OFFSET_SEC, DAY_LIGHT_OFFSET_SEC, nullptr);
@@ -135,7 +130,7 @@ void setup() {
 }
 
 void loop() {
-  if (xSemaphoreTake(timerSemaphore, 0) == pdTRUE)
+  if (xSemaphoreTake(timerSemaphore, 0) == pdTRUE && awakeState != AwakeState::IN_APP)
     sleepTimer++;
 
   switch (wakeup) {
@@ -158,7 +153,7 @@ void loop() {
 void buttonUpdateTask(void *pvParameters) {
   while (1) {
     button.check();
-    vTaskDelay(10);
+    vTaskDelay(5);
   }
   vTaskDelete(NULL);
 }

@@ -5,4 +5,4 @@ void AppGpsSync::drawUI(GxEPD_Class *display) {
   display->updateWindow(0, 0, GxEPD_WIDTH, GxEPD_HEIGHT);
 }
 
-std::unique_ptr<AppGpsSync> appGpsSync(new AppGpsSync("GPS Sync", icon_app_gps_connect));
+std::unique_ptr<AppGpsSync> appGpsSync(new AppGpsSync("Connect to GPS", icon_app_gps_connect));
