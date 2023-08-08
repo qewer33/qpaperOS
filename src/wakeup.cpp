@@ -53,6 +53,9 @@ void wakeupFull(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
+
+  display->fillScreen(GxEPD_WHITE);
+  display->updateWindow(0, 0, GxEPD_WIDTH, GxEPD_HEIGHT);
 }
 
 // Loop

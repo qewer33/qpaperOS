@@ -79,6 +79,9 @@ void setup() {
   buttonConfig->setFeature(ButtonConfig::kFeatureClick);
   buttonConfig->setFeature(ButtonConfig::kFeatureDoubleClick);
   buttonConfig->setFeature(ButtonConfig::kFeatureLongPress);
+  buttonConfig->setClickDelay(200);
+  buttonConfig->setDebounceDelay(10);
+  buttonConfig->setLongPressDelay(1000);
 
   pinMode(BAT_ADC, ANALOG);
   adcAttachPin(BAT_ADC);
@@ -162,6 +165,7 @@ void buttonUpdateTask(void *pvParameters) {
 
 void handleButtonEvent(AceButton *button, uint8_t eventType, uint8_t buttonState) {
   sleepTimer = 0;
+
   switch (eventType) {
   case AceButton::kEventClicked:
     if (awakeState == AwakeState::APPS_MENU) {

@@ -19,7 +19,7 @@ public:
   unsigned int iconWidth;
   unsigned int iconHeight;
 
-  App(String name, const unsigned char *icon, unsigned int iconWidth, unsigned int iconHeight);
+  App(String name, const unsigned char *icon);
   virtual void setup();
   virtual void drawUI(GxEPD_Class *display);
   virtual void exit();

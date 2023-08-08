@@ -39,8 +39,11 @@ Below are features that are implemented or planned:
 - [x] Display time and date
 - [x] Display battery percentage
 - [x] Have the ESP32 MCU on deep sleep and wakeup every minute to update the display for power saving
-- [x] Apps and app system (partially implemented)
-- [ ] Themes and theme system (switchable watchface system)
+- [x] Apps and app system
+    - [x] About (minimal example app)
+    - [ ] WiFi Smartconfig
+    - [ ] GPS Sync
+- [ ] Themes and theme system
 - [ ] GPS functionality
 - [ ] GPS based step counter
 - [ ] Weather display
@@ -71,4 +74,6 @@ The `app_appname.cpp` file is the source file of the app. The source file should
 
 The `app_appname_res.h` file contains the custom resources that are used by the app. These resources can be fonts, icons etc. This file is not necessary if the app doesn't have any custom resources. The app icon should go in `src/resources/app_icons.h`, not the app resource file.
 
-The finished app should be included in `src/apps.cpp` and should be added to the apps array in the `initApps()` function.
+The finished app should be included in `src/apps.cpp` and should be added to the `apps` array in the `initApps()` function.
+
+You can take a look at the source code of the "About" app in `apps/about` for an example of a minimal app.

@@ -1,15 +1,15 @@
 #include "apps.h"
 
+#include "apps/about/app_about.h"
+#include "apps/gps_sync/app_gps_sync.h"
 #include "apps/wifi_smartconfig/app_wifi_smartconfig.h"
 
 std::vector<std::unique_ptr<App>> apps;
 unsigned int currentAppIndex = 0;
 
-App::App(String name, const unsigned char *icon, unsigned int iconWidth, unsigned int iconHeight) {
+App::App(String name, const unsigned char *icon) {
   this->name = name;
   this->icon = icon;
-  this->iconWidth = iconWidth;
-  this->iconHeight = iconHeight;
 }
 
 void App::setup() {}
@@ -18,7 +18,11 @@ void App::exit() {}
 void App::buttonClick() {}
 void App::buttonDoubleClick() {}
 
-void initApps() { apps.emplace_back(std::move(appWiFiSmartconfig)); }
+void initApps() {
+  apps.emplace_back(std::move(appWiFiSmartconfig));
+  apps.emplace_back(std::move(appGpsSync));
+  apps.emplace_back(std::move(appAbout));
+}
 
 void drawAppsListUI(GxEPD_Class *display, ESP32Time *rtc, int batteryStatus) {
   display->fillScreen(GxEPD_WHITE);
