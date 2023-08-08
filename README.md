@@ -41,7 +41,7 @@ Below are features that are implemented or planned:
 - [x] Have the ESP32 MCU on deep sleep and wakeup every minute to update the display for power saving
 - [x] Apps and app system
     - [x] About (minimal example app)
-    - [ ] WiFi Smartconfig
+    - [x] WiFi Smartconfig (connect the watch to WiFi via your phone)
     - [ ] GPS Sync
 - [ ] Themes and theme system
 - [ ] GPS functionality
