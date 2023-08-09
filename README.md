@@ -27,6 +27,14 @@ Required parts for assembly:
 - 4x short M2/M1.6/M1.4 screws
 - 22mm watch strap (compatible with Huawei GT2/GT3 straps)
 
+### Uploading the firmware
+
+Clone this git repository and open it in VSCode. Make sure you have the PlatformIO extension installed. Connect the USB-C cable to your computer and to the T-U2T. Connect the T-U2T to the watch and click the "PlatformIO: Upload" button in the status bar.
+
+### Connecting the watch to WiFi
+
+Install the "ESPTouch" app on your phone, open it and type your WiFi password. Long press the watch user button (top right of the case) to open the applications menu. Navigate to the "Connect to WiFi" app and long press user button to open it. Press "Connect" on the ESPTouch app and wait. Your watch should now be connected to the WiFi network that your phone is connected to.  If the connection times out, try again. The watch will remember the SSID and password of the network and periodically try to connect to it to update time via NTP.
+
 ## The Firmware
 
 > [!WARNING]  
