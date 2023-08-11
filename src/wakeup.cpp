@@ -71,6 +71,8 @@ void wakeupInitLoop(WakeupFlag *wakeupType, unsigned int sleepTimer, GxEPD_Class
 
 void wakeupLightLoop(WakeupFlag *wakeupType, unsigned int sleepTimer, GxEPD_Class *display, ESP32Time *rtc) {
   if (sleepTimer == 15) {
+    digitalWrite(PWR_EN, LOW);
+    esp_sleep_enable_ext0_wakeup((gpio_num_t)PIN_KEY, 0);
     esp_sleep_enable_timer_wakeup(UPDATE_WAKEUP_TIMER_US - 15000000);
     esp_deep_sleep_start();
   }

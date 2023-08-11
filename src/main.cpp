@@ -37,12 +37,14 @@ AwakeState awakeState = AwakeState::APPS_MENU;
 
 uint32_t sleepTimer = 0;
 
-float latitude = 0, longtitude = 0;
-uint8_t satellites = 0;
-
 AceButton button(PIN_KEY);
 void buttonUpdateTask(void *pvParameters);
 void handleButtonEvent(AceButton *button, uint8_t eventType, uint8_t buttonState);
+
+hw_timer_t *uiTimer = NULL;
+volatile SemaphoreHandle_t timerSemaphore;
+
+void ARDUINO_ISR_ATTR onTimer() { xSemaphoreGiveFromISR(timerSemaphore, NULL); }
 
 void WiFiConnected(WiFiEvent_t event, WiFiEventInfo_t info) {
   log(LogLevel::INFO, "WiFi connected");
@@ -50,21 +52,16 @@ void WiFiConnected(WiFiEvent_t event, WiFiEventInfo_t info) {
   log(LogLevel::INFO, "Time synchronized from WiFi");
 }
 
-hw_timer_t *uiTimer = NULL;
-volatile SemaphoreHandle_t timerSemaphore;
-
-void ARDUINO_ISR_ATTR onTimer() { xSemaphoreGiveFromISR(timerSemaphore, NULL); }
-
 void setup() {
-
   Serial.begin(115200);
   delay(10);
   log(LogLevel::INFO, "Welcome to qPaperOS!");
   log(LogLevel::SUCCESS, "Serial communication initiliazed");
 
-  gpsPort.begin(9600, SERIAL_8N1, GPS_RX, GPS_TX);
+  // gpsPort.begin(9600, SERIAL_8N1, GPS_RX, GPS_TX);
+  // digitalWrite(GPS_RES, OUTPUT);
+  // digitalWrite(GPS_RES, LOW);
   SPI.begin(SPI_SCK, -1, SPI_DIN, EPD_CS);
-  digitalWrite(GPS_RES, LOW);
 
   pinMode(PWR_EN, OUTPUT);
   pinMode(PIN_MOTOR, OUTPUT);
@@ -84,8 +81,6 @@ void setup() {
   adcAttachPin(BAT_ADC);
   analogReadResolution(12);
   analogSetWidth(50);
-  calculateBatteryStatus();
-
   log(LogLevel::SUCCESS, "Hardware pins initiliazed");
 
   WiFi.onEvent(WiFiConnected, WiFiEvent_t::ARDUINO_EVENT_WIFI_STA_CONNECTED);
@@ -146,14 +141,12 @@ void loop() {
     wakeupFullLoop(&wakeup, sleepTimer, &display, &rtc, awakeState);
     break;
   }
-
-  delay(10);
 }
 
 void buttonUpdateTask(void *pvParameters) {
   while (1) {
     button.check();
-    vTaskDelay(5);
+    // vTaskDelay(5);
   }
   vTaskDelete(NULL);
 }
